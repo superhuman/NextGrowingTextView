@@ -23,6 +23,10 @@
 import Foundation
 import UIKit
 
+public protocol NextGrowingInternalTextViewDelegate: UITextViewDelegate {
+  func textViewWillPaste(_ textView: UITextView)
+}
+
 // MARK: - NextGrowingInternalTextView: UITextView
 
 internal class NextGrowingInternalTextView: UITextView {
@@ -43,6 +47,11 @@ internal class NextGrowingInternalTextView: UITextView {
 
   deinit {
     NotificationCenter.default.removeObserver(self)
+  }
+
+  override func paste(_ sender: Any?) {
+    (self.delegate as? NextGrowingInternalTextViewDelegate)?.textViewWillPaste(self)
+    super.paste(sender)
   }
 
   override var text: String! {
