@@ -110,12 +110,14 @@ open class NextGrowingTextView: UIScrollView {
 
   private var _maxNumberOfLines: Int = 3 {
     didSet {
+      guard !_isUpdating else { return }
       _maxHeight = simulateHeight(_maxNumberOfLines)
     }
   }
 
   private var _minNumberOfLines: Int = 1 {
     didSet {
+      guard !_isUpdating else { return }
       _minHeight = simulateHeight(_minNumberOfLines)
     }
   }
@@ -123,6 +125,8 @@ open class NextGrowingTextView: UIScrollView {
   private var _maxHeight: CGFloat = 0
   private var _minHeight: CGFloat = 0
   private var _previousFrame: CGRect = CGRect.zero
+
+  private var _isUpdating = false
 
   // MARK: - Initializers
 
@@ -156,6 +160,13 @@ open class NextGrowingTextView: UIScrollView {
     fitToScrollView()
   }
 
+  public func beginUpdates(_ updates: (NextGrowingTextView)->Void) {
+    _isUpdating = true
+    updates(self)
+    _isUpdating = false
+    updateMinimumAndMaximumHeight()
+  }
+
   // MARK: UIResponder
  
   open override func reloadInputViews() {
@@ -178,6 +189,7 @@ open class NextGrowingTextView: UIScrollView {
       self?.fitToScrollView()
     }
     _textView.didUpdateHeightDependencies = { [weak self] in
+      guard self?._isUpdating == false else { return }
       self?.updateMinimumAndMaximumHeight()
     }
   }
