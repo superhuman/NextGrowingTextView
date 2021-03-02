@@ -40,7 +40,7 @@ class ViewController: UIViewController {
     self.growingTextView.layer.cornerRadius = 4
     self.growingTextView.backgroundColor = UIColor(white: 0.9, alpha: 1)
     self.growingTextView.placeholderAttributedText = NSAttributedString(
-      string: "Placeholder text",
+      string: "Placeholder text Placeholder text Placeholder text",
       attributes: [
         .font: self.growingTextView.textView.font!,
         .foregroundColor: UIColor.gray
@@ -66,7 +66,7 @@ class ViewController: UIViewController {
     if let userInfo = (sender as NSNotification).userInfo {
       if let _ = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue.size.height {
         //key point 0,
-        self.inputContainerViewBottom.constant =  0
+        self.inputContainerViewBottom.constant = 0
         //textViewBottomConstraint.constant = keyboardHeight
         UIView.animate(withDuration: 0.25, animations: { () -> Void in self.view.layoutIfNeeded() })
       }

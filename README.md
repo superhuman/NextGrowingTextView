@@ -1,11 +1,11 @@
 # NextGrowingTextView
 
-![](https://img.shields.io/badge/Swift-3.0-blue.svg?style=flat)
-[![CI Status](http://img.shields.io/travis/muukii/NextGrowingTextView.svg?style=flat)](https://travis-ci.org/muukii/NextGrowingTextView)
+![](https://img.shields.io/badge/Swift-5.1-blue.svg?style=flat)
 [![Version](https://img.shields.io/cocoapods/v/NextGrowingTextView.svg?style=flat)](http://cocoapods.org/pods/NextGrowingTextView)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![License](https://img.shields.io/cocoapods/l/NextGrowingTextView.svg?style=flat)](http://cocoapods.org/pods/NextGrowingTextView)
 [![Platform](https://img.shields.io/cocoapods/p/NextGrowingTextView.svg?style=flat)](http://cocoapods.org/pods/NextGrowingTextView)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fmuukii%2FNextGrowingTextView.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fmuukii%2FNextGrowingTextView?ref=badge_shield)
 
 The next in the generations of 'growing textviews' optimized for iOS 8 and above.
 
@@ -20,6 +20,11 @@ NextGrowingTextView approaches the problem differently by wrapping UITextView wi
 - public NextGrowingTextView: UIScrollView
     - internal NextGrowingInternalTextView: UITextView
 ```
+
+> 💡  
+**You want also to need to display a user-interface on top of the keyboard?**  
+[muukii/Bureau](https://github.com/muukii/Bureau) enables you to show your user-interface on top of the keyboard in the easiest way.
+
 
 ## Usage
 
@@ -37,6 +42,8 @@ public var delegates: Delegates
 public override init(frame: CGRect)
 ```
 
+Use `isFlashScrollIndicatorsEnabled` to enable/disable flash scroll indicators while text view height is less than max height.
+
 ## Delegates
 
 ```
@@ -50,7 +57,7 @@ growingTextView.delegates.didChangeHeight = { [weak self] height in
 
 ## Requirements
 
-iOS 8.0+ Swift 4
+iOS 9.0+ Swift 4.2+
 
 ## Installation
 ### CocoaPods
@@ -106,3 +113,6 @@ muukii, m@muukii.me
 ## License
 
 NextGrowingTextView is available under the MIT license. See the LICENSE file for more info.
+
+
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fmuukii%2FNextGrowingTextView.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fmuukii%2FNextGrowingTextView?ref=badge_large)
